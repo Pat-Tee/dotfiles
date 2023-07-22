@@ -41,11 +41,3 @@ else
 which may be found here:\n<https://github.com/jaseg/lolcat/>\n"
 fi
 ########################
-
-# pnpm
-export pnpm_home="/home/rex7goliath/.local/share/pnpm"
-case ":$path:" in
-  *":$pnpm_home:"*) ;;
-  *) export path="$pnpm_home:$path" ;;
-esac
-# pnpm end
