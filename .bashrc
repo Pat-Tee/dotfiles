@@ -13,39 +13,35 @@ alias l='exa -l --color=auto'
 #default prompt
 #PS1='[\u@\h \W]\$ '
 set bell-style visible
-#manually colored, FxA's prompt
-#PS1="\n\
-#    \\[\e[32m\\]\u\[
-#    \[\e[35m\]@\[\e[m\]\
-#    \[\e[34m\]\H\[\e[m\]\
-#    \[\e[35m\]:\[\e[m\]\
-#    \[\e[36m\]\w\[\e[m\]\
-#    \n\
-#    \[\e[33m\]\[Jobs:(\j)]\[\e[m\]\
-#    \n\
-#    \[\e[31m\]>\[\e[m\] "
-#
-#printf %b '\e]12;red\a'
-#FxA's prompt without colors or styles, separated by line for easier processing
-psaa="\u@\H"
-psa=$psaa
-psb="Jobs: \j"
-psc=""
-reset=$(tput sgr0)
-hwcursor='\001$(tput cvvis)\002'
-mycursor="\e[?4;0;16c"
-function makeprompt() {
-    if [[ $HOME == $PWD ]]; then 
-        psa+="/"
-    fi
-    psa+='\w'
-    prompt="\n${psa@P}\n${psb@P}${psc@P}"
-    psa=$psaa
-}
-PROMPT_COMMAND='makeprompt; printf %b $prompt | lolcat -r'
-#export PS1="\001$(tput cuu 1 cuf 2)\002\001$(tput sgr0 cvvis)\002"
-#PROMPT_COMMAND='makeprompt; echo -e $prompt | lolcat'
-PS1="\n\001\e[31m\002>\001\e[m\002 $hwcursor"
+
+#######################
+if command -v lolcat &> /dev/null && lolcat --help | grep 'jaseg' &> /dev/null
+then
+    reset='\e[m'
+    cursor='\e[?6;3;8c'
+    wd='\w'
+    ul='\e[4m'
+    pa='${ul@P}\H${reset@P}'
+    pb='\u'
+    function getwd {
+        local WD=${wd@P}
+        if [[ ${WD:0:1} != '/' ]]
+        then 
+            echo -n '/';
+        fi
+        echo "$WD/"
+    }
+    PROMPT_COMMAND="echo -en '\n'${pa@P} | lolcat -S $RANDOM;
+        getwd | lolcat -S $RANDOM;
+        echo -e ${pb@P} | lolcat -S $RANDOM"
+    PS1=""
+    unset ul cursor reset
+else
+    echo -e "Error: c-lolcat not found.\n You need c-lolcat, \
+which may be found here:\n<https://github.com/jaseg/lolcat/>\n"
+fi
+########################
+
 # pnpm
 export pnpm_home="/home/rex7goliath/.local/share/pnpm"
 case ":$path:" in

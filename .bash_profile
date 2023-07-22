@@ -2,4 +2,4 @@
 # ~/.bash_profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc && neofetch --ascii ouro-nb.txt | lolcat
+[[ -f ~/.bashrc ]] && . ~/.bashrc && neofetch --ascii ~/.profile_art.ascii | lolcat
