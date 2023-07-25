@@ -1,11 +1,11 @@
-#~/bin/bash
+#!/bin/bash
 #
 if [ -f .weather.format ];then weatherformat=$(head -1 .weather.format)
 else
     weatherformat="?0QnF"
 fi
 termcolors='' 
-curl -s wttr.in/$weatherformat > weather.txt
+curl -s --max-time 3 https://wttr.in/$weatherformat > weather.txt
 weather="$(cat weather.txt)"
 
 

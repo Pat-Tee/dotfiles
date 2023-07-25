@@ -3,13 +3,13 @@
 
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-alias reload='clear && . ~/.bash_profile'
-alias py="python"
+alias reload='. ~/.bash_profile && clear -x'
 alias ..='cd ..'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias ll='exa -al --color=auto'
 alias l='exa -l --color=auto'
+
 #default prompt
 #PS1='[\u@\h \W]\$ '
 set bell-style visible
