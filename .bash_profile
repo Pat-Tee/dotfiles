@@ -2,6 +2,5 @@
 # ~/.bash_profile
 #
 
-[[ -f ~/.bashrc ]] && . ~/.bashrc && neofetch --ascii ~/.profile.ascii | lolcat -h 1 -v 1
-
+[[ -f ~/.bashrc ]] && . ~/.bashrc && [[ -f ~/.lolfetch.sh ]] && . ~/.lolfetch.sh
 [[ -f .bash_pathloader ]] && . ~/.bash_pathloader
