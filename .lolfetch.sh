@@ -1,7 +1,8 @@
 #~/bin/bash
 #
+weatherformat=$(head -1 .weather.format)
 termcolors='' 
-curl -s wttr.in/hamburg+new+jersey?0nQFA > weather.txt
+curl -s wttr.in/$weatherformat > weather.txt
 weather="$(cat weather.txt)"
 
 
