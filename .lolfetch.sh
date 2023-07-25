@@ -1,6 +1,9 @@
 #~/bin/bash
 #
-weatherformat=$(head -1 .weather.format)
+if [ -f .weather.format ];then weatherformat=$(head -1 .weather.format)
+else
+    weatherformat="?0QnF"
+fi
 termcolors='' 
 curl -s wttr.in/$weatherformat > weather.txt
 weather="$(cat weather.txt)"
