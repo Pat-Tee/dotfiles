@@ -1,15 +1,16 @@
 # ~/.bashrc
 #
-
+HISTCONTROL=ignoredups
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
-alias reload='. ~/.bash_profile && clear -x'
+alias reload='clear -x && . ~/.bash_profile'
 alias ..='cd ..'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
 alias ll='exa -al --color=auto'
 alias l='exa -l --color=auto'
 
+export EDITOR="nvim"
 #default prompt
 #PS1='[\u@\h \W]\$ '
 set bell-style visible
