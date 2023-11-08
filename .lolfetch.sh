@@ -39,4 +39,5 @@ paste <(echo -n "$profile_art" |\
         echo -n "$termcolors") |\
         sed -e "s,: .*,$(tput sgr0)&,")
 
-unset termcolors, padding, padline, nf, pa_width, pa_lines, profile_art, profile_art_1line
+unset termcolors, padding, padline, nf, pa_width, pa_lines,\
+    profile_art, profile_art_1line

@@ -7,8 +7,14 @@ alias reload='clear -x && . ~/.bash_profile'
 alias ..='cd ..'
 alias ls='ls --color=auto'
 alias grep='grep --color=auto'
+if command -v exa &> /dev/null
+then
 alias ll='exa -al --color=auto'
 alias l='exa -l --color=auto'
+else
+  alias ll='ls -al --color=auto'
+  alias l='ls -l --color=auto'
+fi
 
 export EDITOR="nvim"
 #default prompt
